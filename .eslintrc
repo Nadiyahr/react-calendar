@@ -6,9 +6,11 @@
     "prettier"
   ],
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended" ,
+    // "eslint:recommended",
+    // "plugin:@typescript-eslint/eslint-recommended",
+    // "plugin:@typescript-eslint/recommended" ,
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
     "prettier"
   ],
   "rules": {
@@ -18,10 +20,10 @@
     "react/prop-types": 0,
     "react/self-closing-comp": 0,
     "react/display-name": 0,
-    "no-console": 1,
     "prettier/prettier": [
       "error",
       {
+        "endOfLine": "auto",
         "singleQuote": true,
         "useTabs": false,
         "printWidth": 80,
@@ -33,6 +35,7 @@
      "semi": 0,
      "no-proto": 0,
      "no-unused-vars": 0,
+     "no-console": 1,
 
      // TypeScript
      "@typescript-eslint/no-unused-vars": 0,
