@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './assest/main.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ConstectWrapper from './context/ContextWrapper';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ConstectWrapper>
+      <App />
+    </ConstectWrapper>
   </React.StrictMode>
 );
 
