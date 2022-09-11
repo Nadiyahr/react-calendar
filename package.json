@@ -1,5 +1,6 @@
 {
   "name": "react-calendar",
+  "homepage": "https://nadiyahr.github.io/react-calendar/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -31,6 +32,7 @@
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "prettier-watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",
     "watch:css": "postcss src/assest/tailwind.css -o src/assest/main.css --watch",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "lint-staged": {
@@ -63,6 +65,7 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "autoprefixer": "^10.4.8",

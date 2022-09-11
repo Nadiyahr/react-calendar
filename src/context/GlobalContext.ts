@@ -1,7 +1,20 @@
+import { Action } from './ContextWrapper';
 import dayjs from 'dayjs';
 import React from 'react';
 
-export const GlobalContext = React.createContext({
-  monthIndex: dayjs().month(),
-  setMonthIndex: (index: number) => {}
-});
+interface ICalendarContext {
+  monthIndex: number;
+  selectedDate: string;
+  setMonthIndex: (index: number) => void;
+  setSelectedDate: (string: string) => void;
+}
+
+export const defaultState = {
+  monthIndex: 0,
+  selectedDate: '',
+  setMonthIndex: () => {},
+  setSelectedDate: () => {}
+};
+
+export const GlobalContext =
+  React.createContext<ICalendarContext>(defaultState);

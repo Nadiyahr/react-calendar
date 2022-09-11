@@ -1,18 +1,25 @@
-import { FC, useContext } from 'react';
+import { FC, useCallback, useContext, useEffect, useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import { GlobalContext } from '../context/GlobalContext';
+import { log } from 'console';
 
 interface Props {
   day: Dayjs;
 }
 
 const Day: FC<Props> = ({ day }) => {
-  const { monthIndex } = useContext(GlobalContext);
+  const { monthIndex, selectedDate, setSelectedDate } =
+    useContext(GlobalContext);
 
-  const getCurrentDayClass = () => {
-    return day.format('DD-MM-YY') === dayjs().format('DD-MM-YY')
-      ? 'bg-emerald-200'
-      : '';
+  const getBgDayClass = (day: string) => {
+    // console.log(dayjs().format('DD-M-YYYY'), day);
+    if (day === dayjs().format('DD-M-YYYY')) {
+      return 'bg-emerald-500';
+    } else if (day === selectedDate) {
+      return 'bg-emerald-100';
+    } else {
+      return '';
+    }
   };
 
   const fontColor = () => {
@@ -20,9 +27,28 @@ const Day: FC<Props> = ({ day }) => {
       ? 'text-neutral-700'
       : 'text-slate-500';
   };
+  // day.format('DD-M-YYYY')
+  // e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  const getSelectedDate = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>, str: string) => {
+      e.preventDefault();
+      setSelectedDate(str);
+      // console.log(selectedDate);
+    },
+    [selectedDate]
+  );
+
+  // useEffect(() => {
+  //   // setSelectedDate(selectedDate);
+  //   console.log('useEffect', selectedDate);
+  // }, [selectedDate]);
+
   return (
     <div
-      className={`cursor-pointer border border-emerald-500 flex flex-col ${getCurrentDayClass()}`}
+      className={`cursor-pointer border border-emerald-500 flex flex-col ${getBgDayClass(
+        day.format('DD-M-YYYY')
+      )}`}
+      onClick={(e) => getSelectedDate(e, day.format('DD-M-YYYY'))}
     >
       <header className="flex justify-between">
         <p className={`text-sm m-1 font-extrabold ${fontColor()}`}>
